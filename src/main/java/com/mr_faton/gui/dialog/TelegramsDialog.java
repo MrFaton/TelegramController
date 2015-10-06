@@ -5,6 +5,8 @@ import com.mr_faton.core.entity.Telegram;
 import com.mr_faton.core.util.SettingsHolder;
 import com.mr_faton.gui.frame.MainFrame;
 import com.mr_faton.gui.notifier.UserNotifier;
+import it.sauronsoftware.cron4j.InvalidPatternException;
+import it.sauronsoftware.cron4j.SchedulingPattern;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -112,7 +114,7 @@ public class TelegramsDialog extends JDialog {
             //сохранить всю таблиыу в настройки
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!cellValidator(tableModel)) return;
+                if (!cellValidator(tableModel) || !patternValidator(tableModel)) return;
 
                 List<Telegram> updatedTelegramList = new ArrayList<>();
 
@@ -181,6 +183,20 @@ public class TelegramsDialog extends JDialog {
             }
         }
 
+        return true;
+    }
+
+    private boolean patternValidator(final TableModel tableModel) {
+        int patternColumn = 3;
+        int rows = tableModel.getRowCount();
+        for (int curRow = 0; curRow < rows; curRow++) {
+            if (!SchedulingPattern.validate((String) tableModel.getValueAt(curRow, patternColumn))) {
+                UserNotifier.warningMessage("Неправильный шаблон",
+                        "Вы ввели неверный шаблон для проверки в строке №" + (++curRow) + ".<br/>" +
+                                "Пожалуйста, исправте этот шаблон.");
+                return false;
+            }
+        }
         return true;
     }
 }

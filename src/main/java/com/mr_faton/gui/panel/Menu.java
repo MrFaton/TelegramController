@@ -1,6 +1,7 @@
 package com.mr_faton.gui.panel;
 
 import com.mr_faton.gui.dialog.AboutDialog;
+import com.mr_faton.gui.dialog.AboutPatternDialog;
 import com.mr_faton.gui.dialog.DBServersDialog;
 import com.mr_faton.gui.dialog.TelegramsDialog;
 import com.mr_faton.gui.notifier.UserNotifier;
@@ -19,6 +20,7 @@ public class Menu extends JMenuBar {
         JMenuItem telegramSettings = new JMenuItem("Телеграммы");
         JMenuItem dbServerSettings = new JMenuItem("Серверы БД");
 
+        final JMenuItem aboutPattern = new JMenuItem("Шаблоны");
         final JMenuItem about = new JMenuItem("О программе");
 
         telegramSettings.addActionListener(new ActionListener() {
@@ -55,6 +57,15 @@ public class Menu extends JMenuBar {
             }
         });
 
+        aboutPattern.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AboutPatternDialog aboutPatternDialog = new AboutPatternDialog();
+                aboutPatternDialog.setVisible(true);
+                aboutPatternDialog.toFront();
+            }
+        });
+
         about.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,6 +78,7 @@ public class Menu extends JMenuBar {
         settings.add(telegramSettings);
         settings.add(dbServerSettings);
 
+        help.add(aboutPattern);
         help.add(about);
 
         add(settings);
