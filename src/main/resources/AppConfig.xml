@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="alarmPlayer" class="com.mr_faton.core.util.AlarmPlayer"/>
+    <bean id="notificationPanel" class="com.mr_faton.gui.panel.NotificationPanel"/>
+    <bean id="buttonPanel" class="com.mr_faton.gui.panel.ButtonPanel">
+        <constructor-arg name="alarmPlayer" ref="alarmPlayer"/>
+    </bean>
+    <bean id="menuBar" class="com.mr_faton.gui.panel.Menu">
+        <constructor-arg name="buttonPanel" ref="buttonPanel"/>
+    </bean>
+
+    <bean id="mainFrame" class="com.mr_faton.gui.frame.MainFrame">
+        <constructor-arg name="menuBar" ref="menuBar"/>
+        <constructor-arg name="notificationPanel" ref="notificationPanel"/>
+        <constructor-arg name="buttonPanel" ref="buttonPanel"/>
+    </bean>
+
+    <bean id="telegramControllerDAO" class="com.mr_faton.core.dao.TelegramControllerDAO"/>
+
+</beans>
