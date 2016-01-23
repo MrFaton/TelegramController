@@ -12,6 +12,7 @@ public class Telegram implements Serializable {
     public String getHeader() {
         return header;
     }
+
     public void setHeader(String header) {
         this.header = header;
     }
@@ -19,6 +20,7 @@ public class Telegram implements Serializable {
     public String getDigitalHeader() {
         return digitalHeader;
     }
+
     public void setDigitalHeader(String digitalHeader) {
         this.digitalHeader = digitalHeader;
     }
@@ -26,6 +28,7 @@ public class Telegram implements Serializable {
     public int getSearchDepth() {
         return searchDepth;
     }
+
     public void setSearchDepth(int searchDepth) {
         this.searchDepth = searchDepth;
     }
@@ -33,6 +36,7 @@ public class Telegram implements Serializable {
     public String getCheckPattern() {
         return checkPattern;
     }
+
     public void setCheckPattern(String checkPattern) {
         this.checkPattern = checkPattern;
     }
@@ -40,10 +44,10 @@ public class Telegram implements Serializable {
     public boolean getState() {
         return state;
     }
+
     public void setState(boolean state) {
         this.state = state;
     }
-
 
 
     @Override

@@ -2,7 +2,6 @@ package com.mr_faton.gui.panel;
 
 import com.mr_faton.core.TelegramController;
 import com.mr_faton.core.context.AppContext;
-import com.mr_faton.core.dao.TelegramControllerDAO;
 import com.mr_faton.core.exception.EmptyListException;
 import com.mr_faton.core.util.AlarmPlayer;
 
@@ -68,9 +67,11 @@ public class ButtonPanel extends JPanel {
     public boolean isStartButtonEnabled() {
         return startButton.isEnabled();
     }
+
     public void enableStartButton() {
         startButton.setEnabled(true);
     }
+
     public void disableStartButton() {
         startButton.setEnabled(false);
     }
@@ -78,6 +79,7 @@ public class ButtonPanel extends JPanel {
     public void enableNotifiedButton() {
         notifiedButton.setEnabled(true);
     }
+
     public void disableNotifiedButton() {
         notifiedButton.setEnabled(false);
     }
@@ -85,6 +87,7 @@ public class ButtonPanel extends JPanel {
     public void enableStopButton() {
         stopButton.setEnabled(true);
     }
+
     public void disableStopButton() {
         stopButton.setEnabled(false);
     }

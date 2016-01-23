@@ -27,7 +27,6 @@ public class AboutPatternDialog extends JDialog {
 
         ClassLoader classLoader = getClass().getClassLoader();
         URL fileURL = classLoader.getResource("AboutPatterns.html");
-        System.out.println(fileURL.getPath());
         JEditorPane content = null;
         try {
             content = new JEditorPane(fileURL);

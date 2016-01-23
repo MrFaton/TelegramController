@@ -6,7 +6,7 @@ import com.mr_faton.gui.frame.MainFrame;
 import javax.swing.*;
 import java.awt.*;
 
-public class AboutDialog extends JDialog{
+public class AboutDialog extends JDialog {
     private static int WIDTH = 471;
     private static int HEIGHT = 256;
 
@@ -23,7 +23,7 @@ public class AboutDialog extends JDialog{
                 "<hr>\n" +
                 "<ul>\n" +
                 "<li><font size=\"4\">Автор: Понарин Игорь Сергеевич</font></li>\n" +
-                "<li><font size=\"4\">Версия: 3.0</font></li>\n" +
+                "<li><font size=\"4\">Версия: 3.5</font></li>\n" +
                 "<li><font size=\"4\">Разработанно для АМСГ Харьков Аэропорт</font></li>\n" +
                 "</ul>\n" +
                 "<hr>\n" +

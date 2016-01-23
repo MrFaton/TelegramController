@@ -13,7 +13,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.net.URL;
 
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame {
     private static final Logger logger = Logger.getLogger("" +
             "com.mr_faton.gui.frame.MainFrame");
     private final int WIDTH = 780;

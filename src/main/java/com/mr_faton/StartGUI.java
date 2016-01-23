@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 public class StartGUI {
     private static final Logger logger = Logger.getLogger("" +
             "com.mr_faton.StartGUI");
+
     public static void main(String[] args) {
         try {
             SettingsHolder.load();

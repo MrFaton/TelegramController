@@ -8,13 +8,14 @@ import org.apache.log4j.Logger;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Properties;
 
 public class SettingsHolder {
     private static final Logger logger = Logger.getLogger("" +
             "com.mr_faton.core.util.SettingsHolder");
     private static final String TELEGRAM_LIST_FILE = "TelegramList.ser";
     private static final String DB_SERVER_LIST_FILE = "DBServerList.ser";
+    private static final String SETTINGS_FILE = "Settings.txt";
     private static List<Telegram> telegramList = null;
     private static List<DBServer> dbServerList = null;
 
@@ -59,6 +60,7 @@ public class SettingsHolder {
         logger.debug("return telegram list");
         return telegramList;
     }
+
     public static List<Telegram> getEnableTelegramList() throws EmptyListException {
         if (telegramList == null || telegramList.isEmpty()) {
             logger.warn("telegram list (" + telegramList + ") = null or empty");
@@ -77,7 +79,8 @@ public class SettingsHolder {
         logger.debug("return db server list list");
         return dbServerList;
     }
-    public static List<DBServer> getEnabledDbServerList() throws EmptyListException{
+
+    public static List<DBServer> getEnabledDbServerList() throws EmptyListException {
         if (dbServerList == null || dbServerList.isEmpty()) {
             logger.warn("dbServerList list (" + dbServerList + ") = null or empty");
             throw new EmptyListException("DB Server List is empty or null");
@@ -91,15 +94,37 @@ public class SettingsHolder {
         return enabledDBServerList;
     }
 
+    public static String getAlarmSoundPath() {
+        String alarmSoundPath;
+        try (InputStream in = new FileInputStream(SETTINGS_FILE)) {
+            Properties properties = new Properties();
+            properties.load(in);
+            alarmSoundPath = properties.getProperty("ALARM_SOUND_PATH");
+        } catch (IOException ex) {
+            alarmSoundPath = "";
+        }
+        return alarmSoundPath;
+    }
+
+    public static void saveAlarmSoundPath(String soundPath) {
+        try (OutputStream out = new FileOutputStream(SETTINGS_FILE)) {
+            Properties properties = new Properties();
+            properties.put("ALARM_SOUND_PATH", soundPath);
+            properties.store(out, "Save or update alarm sound path");
+        } catch (IOException ex) {
+            logger.warn("Can't save alarm sound path", ex);
+        }
+    }
+
     //     ***** Service *****
-    private static Object loadObject(String FILE_NAME) throws Exception{
-        try(ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+    private static Object loadObject(String FILE_NAME) throws Exception {
+        try (ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             return objectIn.readObject();
         }
     }
 
     private static void saveObject(Object object, String FILE_NAME) throws Exception {
-        try(ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
+        try (ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
             objectOut.writeObject(object);
             objectOut.flush();
         }

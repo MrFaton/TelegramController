@@ -5,7 +5,6 @@ import com.mr_faton.core.entity.Telegram;
 import com.mr_faton.core.util.SettingsHolder;
 import com.mr_faton.gui.frame.MainFrame;
 import com.mr_faton.gui.notifier.UserNotifier;
-import it.sauronsoftware.cron4j.InvalidPatternException;
 import it.sauronsoftware.cron4j.SchedulingPattern;
 
 import javax.swing.*;
@@ -15,7 +14,7 @@ import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TelegramsDialog extends JDialog {
@@ -40,7 +39,7 @@ public class TelegramsDialog extends JDialog {
         if (telegramList != null) {
             int i = 0;
             for (Telegram telegram : telegramList) {
-                tableModel.insertRow(i, new Object[] {
+                tableModel.insertRow(i, new Object[]{
                         telegram.getHeader(),
                         telegram.getDigitalHeader(),
                         telegram.getSearchDepth(),
@@ -55,12 +54,18 @@ public class TelegramsDialog extends JDialog {
             @Override
             public Class<?> getColumnClass(int column) {
                 switch (column) {
-                    case 0: return String.class;
-                    case 1: return String .class;
-                    case 2: return Integer.class;
-                    case 3: return String .class;
-                    case 4: return Boolean.class;
-                    default: return Object.class;
+                    case 0:
+                        return String.class;
+                    case 1:
+                        return String.class;
+                    case 2:
+                        return Integer.class;
+                    case 3:
+                        return String.class;
+                    case 4:
+                        return Boolean.class;
+                    default:
+                        return Object.class;
                 }
             }
         };
@@ -114,7 +119,8 @@ public class TelegramsDialog extends JDialog {
             //сохранить всю таблиыу в настройки
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!cellValidator(tableModel) || !patternValidator(tableModel)) return;
+                if (!cellValidator(tableModel) || !patternValidator(tableModel))
+                    return;
 
                 List<Telegram> updatedTelegramList = new ArrayList<>();
 

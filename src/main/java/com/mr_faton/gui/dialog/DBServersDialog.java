@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBServersDialog extends JDialog{
+public class DBServersDialog extends JDialog {
     private static int WIDTH = 730;
     private static int HEIGHT = 250;
     private List<DBServer> dbServerList;
@@ -34,7 +34,7 @@ public class DBServersDialog extends JDialog{
         if (dbServerList != null) {
             int i = 0;
             for (DBServer dbServer : dbServerList) {
-                tableModel.insertRow(i, new Object[] {
+                tableModel.insertRow(i, new Object[]{
                         dbServer.getName(),
                         dbServer.getUrl(),
                         dbServer.getUser(),
@@ -49,12 +49,18 @@ public class DBServersDialog extends JDialog{
             @Override
             public Class<?> getColumnClass(int column) {
                 switch (column) {
-                    case 0: return String.class;
-                    case 1: return String.class;
-                    case 2: return String.class;
-                    case 3: return String.class;
-                    case 4: return Boolean.class;
-                    default: return Object.class;
+                    case 0:
+                        return String.class;
+                    case 1:
+                        return String.class;
+                    case 2:
+                        return String.class;
+                    case 3:
+                        return String.class;
+                    case 4:
+                        return Boolean.class;
+                    default:
+                        return Object.class;
                 }
             }
         };

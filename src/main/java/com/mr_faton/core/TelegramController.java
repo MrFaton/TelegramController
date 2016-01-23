@@ -1,11 +1,8 @@
 package com.mr_faton.core;
 
-import com.mr_faton.core.context.AppContext;
-import com.mr_faton.core.dao.TelegramControllerDAO;
 import com.mr_faton.core.entity.DBServer;
 import com.mr_faton.core.entity.Telegram;
 import com.mr_faton.core.exception.EmptyListException;
-import com.mr_faton.core.util.AlarmPlayer;
 import com.mr_faton.core.util.SettingsHolder;
 import com.mr_faton.gui.notifier.UserNotifier;
 import com.mr_faton.gui.panel.ButtonPanel;
@@ -22,7 +19,7 @@ import java.util.List;
  * @version 1.0
  * @since 06.10.2015
  */
-public class TelegramController implements Runnable{
+public class TelegramController implements Runnable {
     private static final Logger logger = Logger.getLogger("" +
             "com.mr_faton.core.TelegramController");
     private List<Telegram> enabledTelegrams;
@@ -32,7 +29,7 @@ public class TelegramController implements Runnable{
     private final Scheduler scheduler;
 
     public TelegramController(NotificationPanel notificationPanel, ButtonPanel buttonPanel)
-            throws EmptyListException{
+            throws EmptyListException {
 
         this.notificationPanel = notificationPanel;
         this.buttonPanel = buttonPanel;

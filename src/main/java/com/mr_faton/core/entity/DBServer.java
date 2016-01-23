@@ -12,6 +12,7 @@ public class DBServer implements Serializable {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -19,6 +20,7 @@ public class DBServer implements Serializable {
     public String getUrl() {
         return url;
     }
+
     public void setUrl(String url) {
         this.url = url;
     }
@@ -26,6 +28,7 @@ public class DBServer implements Serializable {
     public String getUser() {
         return user;
     }
+
     public void setUser(String user) {
         this.user = user;
     }
@@ -33,6 +36,7 @@ public class DBServer implements Serializable {
     public String getUserPassword() {
         return userPassword;
     }
+
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
@@ -40,6 +44,7 @@ public class DBServer implements Serializable {
     public boolean getState() {
         return state;
     }
+
     public void setState(boolean state) {
         this.state = state;
     }
